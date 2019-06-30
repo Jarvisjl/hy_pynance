@@ -21,3 +21,4 @@ update (6/29/19):
 -added user input with exception handling
 -need to do more research on UI in python. The gui in the standard library wasn't well suited for handling user input
     -potentially research web applications (django?), also someone suggested using a recently released microsoft tool for machine learning      (azure ml?)
+-renamed all of the classes
