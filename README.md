@@ -1,5 +1,5 @@
 # hy_pynance
-The purpose of this project is to pull stock index data from tdameritrade's api (and soon alphavantage for real time data) to model stock prices of indices by each minute of the business day. The current version simply displays line plots that model price changes throughout the day for each stock index. The current version takes around 10 seconds to extract, clean, and store a day's worth of data for each index. As of writing this, it takes under 10 seconds to pull the sql data and run the visuals,.
+The purpose of this project is to pull stock index data from tdameritrade's api (and soon alphavantage for real time data) to model the prices of a stock by each minute of the business day. The current version simply displays line plots that model price changes throughout the day for each stock index. The current version takes around 10 seconds to extract, clean, and store a day's worth of data for each index. As of writing this, it takes under 10 seconds to pull the sql data and run the visuals,.
 
 To use:
 -must have a local sql database set up
