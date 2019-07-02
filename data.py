@@ -22,8 +22,8 @@ def get_old_data(company):
     payload = {'apikey':hypy_params.apikey,
                'periodType':'day',
                'frequencyType':'minute',
-               'frequency':'1',
-               'period':'10',
+               'frequency':'30',
+               'period':'1',
                'needExtendedHoursData':'false'}
     
     # make a request
@@ -46,8 +46,7 @@ def get_old_data(company):
     #split into date and time seperately for grouping purposes
     df['date'] = pd.to_datetime(df['datetime']).dt.strftime('%m-%d-%Y')
     df['time'] = pd.to_datetime(df['datetime']).dt.strftime('%H:%M:%S')
-    #drop original datetime column
-    df =df.drop(columns=['datetime'])
+
 
     return df
 
@@ -56,16 +55,20 @@ def get_real(company,frq):
     ###To do
     return
 
-def mean_plot(dataframe, metric, color,comp):
+def var(df, metric):
+    df['var'] = df[metric] #placeholder
+    df[0,'var'] = df[metric]
+    for i in range(1,len(df)):
+        df.loc[i,'var'] = df.loc[i-1,'var'] + (df.loc[i,metric] - df.loc[i-1,'var'])/(i+1)
+    return df
+        
+def _plot(df, comp, *args):
+    colors = ['r','g','b','y','k']
+    i = 0
     fig, ax = plt.subplots()
-    dataframe.groupby(by= ['date']).plot(x='time',
-                                y = metric,
-                                ax=ax,
-                                color = color,
-                                title = comp + 'last 10 day price movement by time of day',
-                                legend =False)
-    mean = dataframe.groupby('time')[metric].mean()
-    mean.plot(color = 'r', legend=True, label = 'simple average')
+    for arg in args:
+        df.plot(x='time',y = arg, ax=ax, color = colors[i],title = comp + 'analysis', legend =True, Label = arg)
+        i = i+1
     plt.show()
 
 

@@ -9,7 +9,6 @@ from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
 import sys
 import datetime
-import auth
 import data
 
 #Take user input to set parameters
@@ -18,13 +17,15 @@ while True:
     try:
         comp = input('Enter stock abreviation: ')
         metric = input('Enter metric: ')
-        color = input('Enter a color for the visual: ')
         df = data.get_old_data(comp)
         break
-    except Exception as e:    
+    except Exception as e:
         pass
+    print('Wrong input, see readme for instructions')
+    
+df = data.var(df,metric)
 
-    print('\nIncorrect parameters. Learn more on this in the read_me. Try again')
+#print('\nIncorrect parameters. Learn more on this in the read_me. Try again')
    
 #will store data if 'y', does nothing if anything else
 get_data = input('Enter "y" if you would like to store data in sql table: ')
@@ -34,5 +35,5 @@ if (get_data=='y'):
 
 #plots
 #valid colors =  {'b', 'g', 'r', 'c', 'm', 'y', 'k', 'w'}
-data.mean_plot(df,metric,color,comp)
+data._plot(df, comp, metric, 'var')
 
