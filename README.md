@@ -6,7 +6,7 @@ To use:
 -use seperate file in another directory to store sensitive information and parameters (or hard code it in)
 
 USER INPUT PARAMETERS:
--For stock: research the abreviation of the stock you wish to visualize. Incorect spelling will lead to an error.
+-For stock: research the abbreviation of the stock you wish to visualize. Incorect spelling will lead to an error.
 -For metric, choose between: open, close, high, low, volume
 -for color (plot), choose between: 'b', 'g', 'r', 'c', 'm', 'y', 'k', 'w'
 
